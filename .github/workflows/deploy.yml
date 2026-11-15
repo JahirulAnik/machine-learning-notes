@@ -1,0 +1,74 @@
+name: Deploy notes website to GitHub Pages
+
+# Builds the notes with Quartz (https://quartz.jzhao.xyz) and publishes them.
+# The notes stay in the repository root, so this folder can remain a plain Obsidian folder.
+# Quartz settings live in .quartz/quartz.config.ts; the Quartz version is pinned below.
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+env:
+  QUARTZ_VERSION: v4.5.2
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out the notes
+        uses: actions/checkout@v4
+
+      - name: Check out Quartz
+        uses: actions/checkout@v4
+        with:
+          repository: jackyzha0/quartz
+          ref: ${{ env.QUARTZ_VERSION }}
+          path: quartz-site
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Collect the notes
+        run: |
+          mkdir -p "$RUNNER_TEMP/content"
+          rsync -a \
+            --exclude='.git' --exclude='.github' --exclude='.quartz' \
+            --exclude='quartz-site' --exclude='.gitignore' \
+            ./ "$RUNNER_TEMP/content/"
+          cp .quartz/quartz.config.ts quartz-site/quartz.config.ts
+
+      - name: Install dependencies
+        working-directory: quartz-site
+        run: npm ci
+
+      - name: Build site
+        working-directory: quartz-site
+        run: npx quartz build -d "$RUNNER_TEMP/content"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: quartz-site/public
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
