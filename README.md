@@ -14,6 +14,7 @@ Every lesson answers three questions in the same order:
 |---|---|---|---|
 | 1 | [Linear Regression](Linear%20Regression.md) | Regression | Fit a straight line, measure the error (MSE), and use derivatives and gradient descent to improve it. |
 | 2 | [Logistic Regression](Logistic%20Regression.md) | Classification | Turn a linear score into a probability with the sigmoid, and fit it by maximising the likelihood. |
+| 3 | [K-Nearest Neighbors](K-Nearest%20Neighbors.md) | Classification and regression | Measure the distance to every stored example, take the k nearest, and let them vote or average. |
 
 More algorithms will be added over time.
 

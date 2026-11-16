@@ -4,6 +4,7 @@ tags: [machine-learning, supervised-learning, classification, algorithm-02]
 created: 2026-11-15
 type: algorithm-note
 prev: "[[Linear Regression]]"
+next: "[[K-Nearest Neighbors]]"
 ---
 
 # Logistic Regression
