@@ -75,14 +75,14 @@ The data is deliberately messy: one student studied 5 hours and still failed. Re
 
 ```mermaid
 flowchart TD
-    A([Start: pick any w and b<br/>e.g. w = 0.3, b = -1]) --> B[Score<br/>zᵢ = w·xᵢ + b]
-    B --> C[Probability<br/>pᵢ = σ(zᵢ)]
-    C --> D[Log-likelihood ℓ<br/>how plausible is the data?]
-    D --> E[Gradients<br/>mean of (p − y)·x and (p − y)]
-    E --> F[Update<br/>w ← w − α·∂J/∂w<br/>b ← b − α·∂J/∂b]
-    F --> G{Has ℓ stopped<br/>rising?}
+    A(["Start: pick any w and b<br/>e.g. w = 0.3, b = -1"]) --> B["Score<br/>zᵢ = w·xᵢ + b"]
+    B --> C["Probability<br/>pᵢ = σ(zᵢ)"]
+    C --> D["Log-likelihood ℓ<br/>how plausible is the data?"]
+    D --> E["Gradients<br/>mean of (p − y)·x and (p − y)"]
+    E --> F["Update<br/>w ← w − α·∂J/∂w<br/>b ← b − α·∂J/∂b"]
+    F --> G{"Has ℓ stopped<br/>rising?"}
     G -- no --> B
-    G -- yes --> H([Done: predict new data<br/>with p = σ(w·x + b)])
+    G -- yes --> H(["Done: predict new data<br/>with p = σ(w·x + b)"])
 ```
 
 ### Notation
