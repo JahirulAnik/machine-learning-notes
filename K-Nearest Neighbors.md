@@ -644,3 +644,5 @@ For regression use `KNeighborsRegressor` in the same way.
 - [ ] Compare KNN with [[Logistic Regression]] on `make_circles`. Which wins, and why?
 
 ---
+
+**Previous algorithm:** [[Logistic Regression]]

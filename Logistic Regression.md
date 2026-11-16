@@ -481,3 +481,5 @@ print(model.predict([[6]]))                # final class at threshold 0.5
 ---
 
 **Previous algorithm:** [[Linear Regression]]
+
+**Next algorithm:** [[K-Nearest Neighbors]]
