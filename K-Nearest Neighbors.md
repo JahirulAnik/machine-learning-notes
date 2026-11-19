@@ -4,6 +4,7 @@ tags: [machine-learning, supervised-learning, classification, regression, algori
 created: 2026-11-16
 type: algorithm-note
 prev: "[[Logistic Regression]]"
+next: "[[Naive Bayes]]"
 ---
 
 # K-Nearest Neighbors (KNN)
@@ -646,3 +647,5 @@ For regression use `KNeighborsRegressor` in the same way.
 ---
 
 **Previous algorithm:** [[Logistic Regression]]
+
+**Next algorithm:** [[Naive Bayes]]

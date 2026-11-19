@@ -15,6 +15,8 @@ Machine learning algorithms explained **step by step**. Every lesson answers thr
 
 1. [[Linear Regression]]: fit a straight line, measure the error (MSE), and use derivatives and gradient descent to improve it.
 2. [[Logistic Regression]]: turn a linear score into a probability with the sigmoid, and fit it by maximising the likelihood.
+3. [[K-Nearest Neighbors]]: measure the distance to every stored example, take the k nearest, and let them vote or average.
+4. [[Naive Bayes]]: multiply the class prior by the likelihood of each feature (Bayes' theorem plus an independence assumption), and train by counting.
 
 More algorithms will be added over time.
 
